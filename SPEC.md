@@ -74,9 +74,9 @@ field. Treat each color variant as a distinct goal for duplicate purposes.
 
 ## Draft rules
 
-- 3 players, named by the user at setup (default P1/P2/P3)
-- 6x6 board = 36 picks, 12 per player
-- **Snake order**: A B C C B A A B C C B A ... (removes first-pick advantage)
+- 3 or 4 players, named by the user at setup (default P1/P2/P3, P4 optional)
+- 6x6 board = 36 picks, split evenly (12 per player at 3, 9 per player at 4)
+- **Rotating order**: A B C A B C ... (A B C D A B C D ... at 4 players)
 - Each turn, offer 2 goals drawn at random from the remaining pool
 - Player picks one; it's appended to the board in order
 - No goal can appear twice on the board

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Draftout 3–4 Player Board Draft</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- SETUP -->
+<section id="screen-setup" class="screen active">
+  <h1>Draftout — 3–4 Player Board Draft</h1>
+  <p class="subtitle">Hot-seat draft for a Lockout board. One device, taking turns.</p>
+
+  <div id="resume-banner" class="resume-banner" hidden>
+    <span>You have a draft in progress.</span>
+    <span class="row">
+      <button id="resume-btn" type="button">Resume draft</button>
+      <button id="discard-resume-btn" type="button" class="secondary">Discard it</button>
+    </span>
+  </div>
+
+  <form id="setup-form" class="panel">
+    <h2>Players</h2>
+    <div class="player-fields">
+      <div class="field">
+        <label for="p1">Player 1</label>
+        <input type="text" id="p1" name="p1" placeholder="P1" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label for="p2">Player 2</label>
+        <input type="text" id="p2" name="p2" placeholder="P2" autocomplete="off" />
+      </div>
+      <div class="field">
+        <label for="p3">Player 3</label>
+        <input type="text" id="p3" name="p3" placeholder="P3" autocomplete="off" />
+      </div>
+      <div class="field" id="p4-field" hidden>
+        <label for="p4">Player 4</label>
+        <input type="text" id="p4" name="p4" placeholder="P4" autocomplete="off" />
+      </div>
+    </div>
+    <button id="toggle-p4-btn" type="button" class="secondary">+ Add 4th player</button>
+
+    <div class="row">
+      <div class="field" style="max-width: 160px;">
+        <h2 style="margin-top: 20px;">Board size</h2>
+        <label for="boardSize">Size (3–7, square)</label>
+        <input type="number" id="boardSize" name="boardSize" min="3" max="7" value="6" />
+      </div>
+      <div class="field" style="max-width: 160px;">
+        <h2 style="margin-top: 20px;">Rerolls</h2>
+        <label for="rerolls">Per player</label>
+        <input type="number" id="rerolls" name="rerolls" min="0" max="10" value="1" />
+      </div>
+    </div>
+
+    <button type="submit">Start Draft</button>
+  </form>
+</section>
+
+<!-- DRAFT -->
+<section id="screen-draft" class="screen">
+  <div class="turn-banner">
+    <span id="turn-dot" class="turn-dot"></span>
+    <strong id="turn-label">—</strong>
+    <button id="reroll-btn" type="button" class="secondary">Reroll</button>
+    <span id="pick-timer" class="pick-timer"></span>
+    <span id="picks-remaining" class="picks-remaining"></span>
+  </div>
+
+  <div id="offer-grid" class="offer-grid"></div>
+
+  <div class="row between" style="margin-bottom: 10px;">
+    <div id="legend" class="legend"></div>
+    <button id="undo-btn" type="button" class="secondary">Undo last action</button>
+  </div>
+
+  <div id="board-grid" class="board-grid"></div>
+</section>
+
+<!-- END -->
+<section id="screen-end" class="screen">
+  <h1>Board complete</h1>
+  <p class="subtitle">Download the JSON and drop it into <code>.minecraft/lockout-boards/</code>.</p>
+
+  <div id="end-board-grid" class="board-grid"></div>
+
+  <div class="panel">
+    <div class="field" style="max-width: 320px;">
+      <label for="board-name">File name</label>
+      <input type="text" id="board-name" placeholder="draftout-board" />
+    </div>
+    <div class="end-actions">
+      <button id="download-json-btn" type="button">Download board JSON</button>
+      <button id="download-text-btn" type="button" class="secondary">Download plain-text list</button>
+      <button id="new-draft-btn" type="button" class="secondary">Start new draft</button>
+    </div>
+    <label for="export-textarea">Plain-text list (fallback / copy-paste)</label>
+    <textarea id="export-textarea" readonly></textarea>
+  </div>
+</section>
+
+<script src="goals-data.js"></script>
+<script src="draft-logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
